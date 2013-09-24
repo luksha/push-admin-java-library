@@ -13,7 +13,7 @@ import java.util.logging.Logger;
  *
  * @author mmilivojevic
  */
-class Header {
+public class Header {
     
     private final String encoding = "UTF-8";
 
