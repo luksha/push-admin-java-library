@@ -8,36 +8,25 @@ package com.infobip.push.dto;
 public class ChannelDTO {
 	private String name;
 	private String applicationID;
-	private String apiKey;
     private String description;
-    private boolean disabled;
-    private String notificationURL;
-    private String[] supportedOSTypes;
-    private boolean isIOSProduction;
+    private String parent;
+    private String[] children;
+  
  
-    public ApplicationInfoDTO() {}
+     public ChannelDTO() {}
     
-    
-    public String getName() {
-		return name;
-	}
-	public void setName(String name) {
-		this.name = name;
-	}
-	
-	public String getApplicationID() {
+ 	public String getApplicationID() {
 		return applicationID;
 	}
 	public void setApplicationID(String applicationID) {
 		this.applicationID = applicationID;
 	}
 	
-	
-	public String getApiKey() {
-		return apiKey;
+    public String getName() {
+		return name;
 	}
-	public void setApiKey(String  apiKey) {
-		this. apiKey =  apiKey;
+	public void setName(String name) {
+		this.name = name;
 	}
 	
 	
@@ -48,42 +37,29 @@ public class ChannelDTO {
 		this.description = description;
 	}
 	
-	public boolean getDisabled() {
-		return disabled;
+
+	public String getParent() {
+		return parent;
 	}
-	public void setDisabled(boolean disabled) {
-		this.disabled = disabled;
-	}
-	
-	public String getNotificationURL() {
-		return notificationURL;
-	}
-	public void setNotificationURL(String notificationURL) {
-		this.notificationURL = notificationURL;
+	public void setParent(String parent) {
+		this.parent =parent;
 		
 	}
 	
-	public String[] getSupportedOSTypes() {
-		return supportedOSTypes;
+	public String[] getChildren() {
+		return children;
 	}
-	public void setSupportedOSTypes(String[] supportedOSTypes) {
-		this.supportedOSTypes = supportedOSTypes;
+	public void setChildren(String[] children) {
+		this.children = children;
 	}
-	
-	public boolean  getIsIOSProduction() {
-		return isIOSProduction;
-	}
-	public void  setIsIOSProduction(boolean  isIOSProduction) {
-		this.isIOSProduction = isIOSProduction;
-	}
+
 	
 	
 	@Override
 	public String toString() {
-		return "ApplicationInfoDTO [name=" + name + ", applicationId=" + applicationID 
-				+ ", apiKey=" + apiKey	+ ",description=" + description + ", disabled=" + disabled + ",notificationURL=" + notificationURL + ", supportedOSTypes="
-				+ supportedOSTypes + ", isIOSProduction=" + isIOSProduction
-				+ "]";
+		return "ApplicationInfoDTO [applicationId=" + applicationID +", name=" + name 
+				+ ",description=" + description  + ", parent=" + parent + ", children="
+				+ children + "]";
 	}
 
    

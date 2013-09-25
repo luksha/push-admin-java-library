@@ -4,6 +4,11 @@
  */
 package com.infobip.push.client;
 
+import java.util.List;
+
+import com.infobip.push.dto.ApplicationInfoDTO;
+import com.infobip.push.dto.ApplicationsServiceInfoDTO;
+
 /**
  *
  * @author mmilivojevic
@@ -14,17 +19,10 @@ public class Main {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-//        Request request = new Request("https://pushapi.infobip.com/1/applications");
-//        List headers = new ArrayList<Header>();
-//        headers.add(new Header("Authorization", "Basic cHVzaGRlbW86cHVzaGRlbW8="));
-//        
-//        request.setHeaders(headers);
-//        try {
-//            String response = request.executeGet();
-//            System.out.println(response);
-//        } catch (Exception ex) {
-//            Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
-//        }
+        
+        AndroidPushManager manager = new AndroidPushManager("pushdemo", "pushdemo");
+        List<ApplicationInfoDTO> app = manager.getApplications();
+        System.out.println(app.get(0).getName());
         
 //        Request request = new Request("https://pushapi.infobip.com/3/application/50be430aed76/message");
 //        List headers = new ArrayList<Header>();

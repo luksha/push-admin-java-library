@@ -2,12 +2,6 @@ package com.infobip.push.java;
 
 import java.util.ArrayList;
 import java.util.List;
-
-
-
-
-
-
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -23,12 +17,12 @@ import com.infobip.push.dto.ChannelServiceDTO;
 */
 
 public class JSONDeserializer {
-	
-	private static final String NAME = "name";
-	private static final String APPLICATION_ID = "applicationID";
-	private static final String APIKEY = "apiKey";
-	private static final String DESCRIPTION = "description";
-	private static final String DISABLED = "disabled";
+
+    private static final String NAME = "name";
+    private static final String APPLICATION_ID = "applicationID";
+    private static final String APIKEY = "apiKey";
+    private static final String DESCRIPTION = "description";
+    private static final String DISABLED = "disabled";
     private static final String NOTIFICATION_URL = "notificationURL";
 	private static final String SUPPORTED_OS_TYPES = "supportedOSTypes";
 	private static final String IS_IOS_PRODUCTION = "isIOSProduction";
@@ -36,8 +30,8 @@ public class JSONDeserializer {
 	private static final String PARENT = "parent";
 	private static final String CHILDREN = "children";
 
-	
 
+    
     private static ApplicationInfoDTO deserializeApplicationInfo(JSONObject json)
     		throws JSONException {
 		
@@ -73,30 +67,22 @@ public class JSONDeserializer {
       
 	
 		return infoDTO;
+
         }
+
+    public static List<ApplicationInfoDTO> deserializeServiceInfo(String serviceInfoJson)
+            throws JSONException {
+
+        JSONArray serviceInfo = new JSONArray(serviceInfoJson);
+        List<ApplicationInfoDTO> applicationsList = new ArrayList<ApplicationInfoDTO>();
+
+        for (int i = 0; i < serviceInfo.length(); ++i) {
+            ApplicationInfoDTO packageInfo = deserializeApplicationInfo(serviceInfo.getJSONObject(i));
+            applicationsList.add(packageInfo);
+        }
+        return applicationsList;
+    }
     
-    
-	public static ApplicationsServiceInfoDTO deserializeServiceInfo(String serviceInfoJson) 
-			throws JSONException {
-		
-		
-		JSONArray serviceInfo = new JSONArray(serviceInfoJson);
-		
-		ApplicationsServiceInfoDTO serviceInfoDTO = new ApplicationsServiceInfoDTO();
-		
-		List<ApplicationInfoDTO> applicationsList = new ArrayList<ApplicationInfoDTO>();
-				
-		for (int i = 0; i < serviceInfo.length(); ++i) {
-					
-	ApplicationInfoDTO packageInfo = deserializeApplicationInfo(serviceInfo.getJSONObject(i));
-			
-					applicationsList.add(packageInfo);
-					}
-					serviceInfoDTO.setApplicationPackages(applicationsList);
-					
-		
-		return serviceInfoDTO;
-	}
 	
 	
 	 private static ChannelDTO deserializeChannle(JSONObject json) throws JSONException {
@@ -116,7 +102,7 @@ public class JSONDeserializer {
 				infoDTO.setDescription(json.getString(DESCRIPTION));
 			
 	        if (json.has(PARENT)&& !json.isNull(PARENT)) 	    				
-	        	infoDTO.setDisabled(json.getBoolean(PARENT));
+	        	infoDTO.setParent(json.getString(PARENT));
 	       
 	        
 	        if (json.has(CHILDREN)) 	{
@@ -126,7 +112,7 @@ public class JSONDeserializer {
 	        
 	        for (int i = 0; i < OsTypes.length(); i++){
 	        	 types[i] = OsTypes.getString(i);
-	        	  infoDTO.setSupportedOSTypes(types);
+	        	  infoDTO.setChildren(types);
 	            
 	        }}
 	  
@@ -136,31 +122,20 @@ public class JSONDeserializer {
 	        }
 	    
 	    
-		public static ChannelServiceDTO deserializeServiceChannel(String serviceInfoJson) 
+	public static List<ChannelDTO> deserializeServiceChannel(String serviceInfoJson) 
 				throws JSONException {
 			
-			
-			JSONArray serviceInfo = new JSONArray(serviceInfoJson);
-			
-			ApplicationsServiceInfoDTO serviceInfoDTO = new ApplicationsServiceInfoDTO();
-			
-			List<ApplicationInfoDTO> applicationsList = new ArrayList<ApplicationInfoDTO>();
-					
-			for (int i = 0; i < serviceInfo.length(); ++i) {
-						
-ApplicationInfoDTO packageInfo = deserializeApplicationInfo(serviceInfo.getJSONObject(i));
-				
-						applicationsList.add(packageInfo);
-						}
-						serviceInfoDTO.setApplicationPackages(applicationsList);
-						
-					
-				
-			
-			
-			return serviceInfoDTO;
+		JSONArray serviceInfo = new JSONArray(serviceInfoJson);
+	       List<ChannelDTO> channelList = new ArrayList<ChannelDTO>();
+
+	       for (int i = 0; i < serviceInfo.length(); ++i) {
+	    	  ChannelDTO packageInfo = deserializeChannle(serviceInfo.getJSONObject(i));
+	            channelList.add(packageInfo);
+	        }
+	        return channelList;
 		}
 		
 		
     
+
 }

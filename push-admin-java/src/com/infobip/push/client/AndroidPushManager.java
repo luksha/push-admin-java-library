@@ -4,14 +4,17 @@
  */
 package com.infobip.push.client;
 
+import com.infobip.push.dto.ApplicationInfoDTO;
+import com.infobip.push.dto.ApplicationsServiceInfoDTO;
 import com.infobip.push.dto.ChannelDTO;
+import com.infobip.push.java.Base64;
 import com.infobip.push.java.Header;
+import com.infobip.push.java.JSONDeserializer;
 import com.infobip.push.java.Request;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import sun.misc.BASE64Encoder;
 
 /**
  *
@@ -27,7 +30,7 @@ public class AndroidPushManager implements PushManager {
     }
 
     @Override
-    public void getApplications() {
+    public List<ApplicationInfoDTO> getApplications() {
         Request request = new Request("https://pushapi.infobip.com/1/applications");
         List headerList = new ArrayList<Header>();
 
@@ -38,9 +41,11 @@ public class AndroidPushManager implements PushManager {
         try {
             response = request.executeGet();
             System.out.println(response);       //!!! return
+            return JSONDeserializer.deserializeServiceInfo(response);
         } catch (Exception ex) {
             Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
         }
+        return null;
 
     }
 
@@ -93,7 +98,6 @@ public class AndroidPushManager implements PushManager {
 
     private String setCredentials(String user, String pass) {
         String cred = user + ':' + pass;
-        BASE64Encoder enc = new BASE64Encoder();
-        return enc.encode(cred.getBytes());
+        return Base64.encode(cred.getBytes());
     }
 }

@@ -6,21 +6,21 @@ package com.infobip.push.dto;
 */
 
 public class ApplicationInfoDTO {
-	
-	
-	private String name;
-	private String applicationID;
-	private String apiKey;
+
+    private String name;
+    private String applicationID;
+    private String apiKey;
     private String description;
     private boolean disabled;
     private String notificationURL;
     private String[] supportedOSTypes;
     private boolean isIOSProduction;
- 
-    public ApplicationInfoDTO() {}
-    
-    
+
+    public ApplicationInfoDTO() {
+    }
+
     public String getName() {
+
 		return name;
 	}
 	public void setName(String name) {
@@ -88,8 +88,8 @@ public class ApplicationInfoDTO {
 				+ "]";
 	}
 
+    
+    }
+
+
    
-	
-
-
-}
