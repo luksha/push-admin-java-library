@@ -4,14 +4,16 @@
  */
 package com.infobip.push.client;
 
+import com.infobip.push.dto.ApplicationsServiceInfoDTO;
 import com.infobip.push.dto.ChannelDTO;
 import com.infobip.push.java.Header;
+import com.infobip.push.java.JSONDeserializer;
 import com.infobip.push.java.Request;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import sun.misc.BASE64Encoder;
+import sun.misc.BASE64Encoder; //TODO: Change with newone
 
 /**
  *
@@ -27,7 +29,7 @@ public class AndroidPushManager implements PushManager {
     }
 
     @Override
-    public void getApplications() {
+    public ApplicationsServiceInfoDTO getApplications() {
         Request request = new Request("https://pushapi.infobip.com/1/applications");
         List headerList = new ArrayList<Header>();
 
@@ -38,9 +40,11 @@ public class AndroidPushManager implements PushManager {
         try {
             response = request.executeGet();
             System.out.println(response);       //!!! return
+            return JSONDeserializer.deserializeServiceInfo(response);
         } catch (Exception ex) {
             Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
         }
+        return null;
 
     }
 
