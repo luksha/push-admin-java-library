@@ -14,7 +14,6 @@ import java.util.logging.Logger;
  * @author mmilivojevic
  */
 class Param {
-
     private final String encoding = "UTF-8";
     
     private String name;
