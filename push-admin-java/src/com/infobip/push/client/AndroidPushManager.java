@@ -4,6 +4,7 @@
  */
 package com.infobip.push.client;
 
+import com.infobip.push.dto.ApplicationInfoDTO;
 import com.infobip.push.dto.ApplicationsServiceInfoDTO;
 import com.infobip.push.dto.ChannelDTO;
 import com.infobip.push.java.Base64;
@@ -29,7 +30,7 @@ public class AndroidPushManager implements PushManager {
     }
 
     @Override
-    public ApplicationsServiceInfoDTO getApplications() {
+    public List<ApplicationInfoDTO> getApplications() {
         Request request = new Request("https://pushapi.infobip.com/1/applications");
         List headerList = new ArrayList<Header>();
 

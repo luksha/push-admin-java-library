@@ -4,6 +4,7 @@
  */
 package com.infobip.push.client;
 
+import com.infobip.push.dto.ApplicationInfoDTO;
 import com.infobip.push.dto.ApplicationsServiceInfoDTO;
 import com.infobip.push.dto.ChannelDTO;
 import java.util.List;
@@ -14,7 +15,7 @@ import java.util.List;
  */
 public interface PushManager {
     
-    public ApplicationsServiceInfoDTO getApplications();
+    public List<ApplicationInfoDTO> getApplications();
     public void getChanels(String applicationId);
     public void sendMessages(String message, List<ChannelDTO> channel);
 }

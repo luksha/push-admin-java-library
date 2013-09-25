@@ -71,19 +71,16 @@ public class JSONDeserializer {
         return infoDTO;
     }
 
-    public static ApplicationsServiceInfoDTO deserializeServiceInfo(String serviceInfoJson)
+    public static List<ApplicationInfoDTO> deserializeServiceInfo(String serviceInfoJson)
             throws JSONException {
 
         JSONArray serviceInfo = new JSONArray(serviceInfoJson);
-        ApplicationsServiceInfoDTO serviceInfoDTO = new ApplicationsServiceInfoDTO();
         List<ApplicationInfoDTO> applicationsList = new ArrayList<ApplicationInfoDTO>();
 
         for (int i = 0; i < serviceInfo.length(); ++i) {
             ApplicationInfoDTO packageInfo = deserializeApplicationInfo(serviceInfo.getJSONObject(i));
             applicationsList.add(packageInfo);
         }
-
-        serviceInfoDTO.setApplicationPackages(applicationsList);
-        return serviceInfoDTO;
+        return applicationsList;
     }
 }

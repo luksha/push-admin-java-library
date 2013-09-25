@@ -4,6 +4,9 @@
  */
 package com.infobip.push.client;
 
+import java.util.List;
+
+import com.infobip.push.dto.ApplicationInfoDTO;
 import com.infobip.push.dto.ApplicationsServiceInfoDTO;
 
 /**
@@ -18,8 +21,8 @@ public class Main {
     public static void main(String[] args) {
         
         AndroidPushManager manager = new AndroidPushManager("pushdemo", "pushdemo");
-        ApplicationsServiceInfoDTO app = manager.getApplications();
-        System.out.println(app.getApplicationPackages().get(0).getName());
+        List<ApplicationInfoDTO> app = manager.getApplications();
+        System.out.println(app.get(0).getName());
         
 //        Request request = new Request("https://pushapi.infobip.com/3/application/50be430aed76/message");
 //        List headers = new ArrayList<Header>();
