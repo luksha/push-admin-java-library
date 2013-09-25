@@ -4,14 +4,6 @@
  */
 package com.infobip.push.client;
 
-import com.infobip.push.java.Header;
-import com.infobip.push.java.Request;
-import java.util.AbstractList;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-
 /**
  *
  * @author mmilivojevic
