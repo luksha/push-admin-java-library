@@ -34,20 +34,21 @@ public class Main {
 //            Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
 //        }
         
-        Request request = new Request("https://pushapi.infobip.com/3/application/50be430aed76/message");
-        List headers = new ArrayList<Header>();
-        headers.add(new Header("Authorization", "Basic cHVzaGRlbW86cHVzaGRlbW8="));
-        headers.add(new Header("Content-Type", "application/json"));
+//        Request request = new Request("https://pushapi.infobip.com/3/application/50be430aed76/message");
+//        List headers = new ArrayList<Header>();
+//        headers.add(new Header("Authorization", "Basic cHVzaGRlbW86cHVzaGRlbW8="));
+//        headers.add(new Header("Content-Type", "application/json"));
+//        
+//        request.setHeaders(headers);
+//        request.setPostBody("{\"sentType\":\"application\",\"mimeType\":\"text/plain\",\"OSTypes\":[\"Android\"],\"notificationMessage\":\"Test\",\"androidData\":{}}");
+//        
+//        try {
+//            String response = request.executePost();
+//            System.out.println(response);
+//        } catch (Exception ex) {
+//            Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
+//        }
         
-        request.setHeaders(headers);
-        request.setPostBody("{\"sentType\":\"application\",\"mimeType\":\"text/plain\",\"OSTypes\":[\"Android\"],\"notificationMessage\":\"Test\",\"androidData\":{}}");
-        
-        try {
-            String response = request.executePost();
-            System.out.println(response);
-        } catch (Exception ex) {
-            Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
-        }
         
     }
 }

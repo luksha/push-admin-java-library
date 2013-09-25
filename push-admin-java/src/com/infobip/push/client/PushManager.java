@@ -4,14 +4,16 @@
  */
 package com.infobip.push.client;
 
+import com.infobip.push.dto.ChannelDTO;
+import java.util.List;
+
 /**
  *
  * @author mmilivojevic
  */
 public interface PushManager {
-    public void setUsername(String user);
-    public void setPassword(String pass);
+    
     public void getApplications();
-    public void getChanels(String aplicationId);
-    public void sendMessages(String message);
+    public void getChanels(String applicationId);
+    public void sendMessages(String message, List<ChannelDTO> channel);
 }
