@@ -1,4 +1,4 @@
-package com.infobip.push.java;
+package com.infobip.push.dto;
 
 public class ApplicationInfoDTO {
 	
