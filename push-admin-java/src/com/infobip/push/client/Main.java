@@ -19,7 +19,7 @@ public class Main {
         
         AndroidPushManager manager = new AndroidPushManager("pushdemo", "pushdemo");
         ApplicationsServiceInfoDTO app = manager.getApplications();
-        System.out.println("aaa");
+        System.out.println(app.getApplicationPackages().get(0).getName());
         
 //        Request request = new Request("https://pushapi.infobip.com/3/application/50be430aed76/message");
 //        List headers = new ArrayList<Header>();

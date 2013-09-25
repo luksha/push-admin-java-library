@@ -6,6 +6,7 @@ package com.infobip.push.client;
 
 import com.infobip.push.dto.ApplicationsServiceInfoDTO;
 import com.infobip.push.dto.ChannelDTO;
+import com.infobip.push.java.Base64;
 import com.infobip.push.java.Header;
 import com.infobip.push.java.JSONDeserializer;
 import com.infobip.push.java.Request;
@@ -13,7 +14,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import sun.misc.BASE64Encoder; //TODO: Change with newone
 
 /**
  *
@@ -97,7 +97,6 @@ public class AndroidPushManager implements PushManager {
 
     private String setCredentials(String user, String pass) {
         String cred = user + ':' + pass;
-        BASE64Encoder enc = new BASE64Encoder();
-        return enc.encode(cred.getBytes());
+        return Base64.encode(cred.getBytes());
     }
 }
