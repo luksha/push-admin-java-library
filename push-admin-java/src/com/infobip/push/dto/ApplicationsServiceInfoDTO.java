@@ -3,7 +3,10 @@ package com.infobip.push.dto;
 
 import java.util.List;
 
-
+/**
+*
+* @author nkolarevic
+*/
 public class ApplicationsServiceInfoDTO {
 
 	private List<ApplicationInfoDTO> applicationsPackages;

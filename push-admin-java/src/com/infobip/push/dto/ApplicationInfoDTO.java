@@ -1,5 +1,10 @@
 package com.infobip.push.dto;
 
+/**
+*
+* @author nkolarevic
+*/
+
 public class ApplicationInfoDTO {
 	
 	
@@ -77,8 +82,8 @@ public class ApplicationInfoDTO {
 	
 	@Override
 	public String toString() {
-		return "ApplicationInfoDTO [name=" + name + ", applicationId=" + applicationID + ", apiKey=" + apiKey
-				+ ",description=" + description + ", disabled=" + disabled + ",notificationURL=" + notificationURL + ", supportedOSTypes="
+		return "ApplicationInfoDTO [name=" + name + ", applicationId=" + applicationID 
+				+ ", apiKey=" + apiKey	+ ",description=" + description + ", disabled=" + disabled + ",notificationURL=" + notificationURL + ", supportedOSTypes="
 				+ supportedOSTypes + ", isIOSProduction=" + isIOSProduction
 				+ "]";
 	}
