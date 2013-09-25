@@ -14,7 +14,6 @@ import java.util.logging.Logger;
  * @author mmilivojevic
  */
 public class Header {
-    
     private final String encoding = "UTF-8";
 
     private String name;
