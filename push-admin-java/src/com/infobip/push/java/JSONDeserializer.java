@@ -1,5 +1,7 @@
 package com.infobip.push.java;
 
+import java.util.ArrayList;
+import java.util.List;
 
 
 import org.json.JSONArray;
@@ -27,12 +29,12 @@ public class JSONDeserializer {
 		
 		if (json.has(NAME) && !json.isNull(NAME)) 		    							infoDTO.setName(json.getString(NAME));
 		if (json.has(APPLICATION_ID)&& !json.isNull(APPLICATION_ID)) 	        		infoDTO.setApplicationID(json.getString(APPLICATION_ID));
-		if (json.has(APIKEY) && !json.isNull(APIKEY)) 									infoDTO.setApiKey(json.getString(APIKEY));
+		if (json.has(APIKEY)) 															infoDTO.setApiKey(json.getString(APIKEY));
 		if (json.has(DESCRIPTION) && !json.isNull(DESCRIPTION))   						infoDTO.setDescription(json.getString(DESCRIPTION));
         if (json.has(DISABLED)&& !json.isNull(DISABLED)) 	    						infoDTO.setDisabled(json.getBoolean(DISABLED));
-        if (json.has(NOTIFICATION_URL)&& !json.isNull(NOTIFICATION_URL))				infoDTO.setNotificationURL(json.getString(NOTIFICATION_URL)); 
+        if (json.has(NOTIFICATION_URL))													infoDTO.setNotificationURL(json.getString(NOTIFICATION_URL)); 
         
-        if (json.has(SUPPORTED_OS_TYPES)&& !json.isNull(SUPPORTED_OS_TYPES)) 	{
+        if (json.has(SUPPORTED_OS_TYPES)) 	{
         	
         JSONArray OsTypes = json.getJSONArray(SUPPORTED_OS_TYPES);
         String[] types = new String[5];
@@ -47,6 +49,33 @@ public class JSONDeserializer {
 	
 		return infoDTO;
         }
+    
+    
+	public static ApplicationsServiceInfoDTO deserializeServiceInfo(String serviceInfoJson) throws JSONException {
+		
+		
+		JSONArray serviceInfo = new JSONArray(serviceInfoJson);
+		
+		ApplicationsServiceInfoDTO serviceInfoDTO = new ApplicationsServiceInfoDTO();
+		
+		
+				List<ApplicationInfoDTO> applicationsList = new ArrayList<ApplicationInfoDTO>();
+				
+				for (int i = 0; i < serviceInfo.length(); ++i) {
+					
+					ApplicationInfoDTO packageInfo = deserializeApplicationInfo(serviceInfo.getJSONObject(i));
+			
+						applicationsList.add(packageInfo);
+					}
+					serviceInfoDTO.setApplicationPackages(applicationsList);
+					
+				
+			
+		
+		
+		return serviceInfoDTO;
+	}
+	
 	
     
 }
